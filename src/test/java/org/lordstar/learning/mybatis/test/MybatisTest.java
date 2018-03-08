@@ -45,10 +45,10 @@ public class MybatisTest {
     @Test
     public void testInsertStudent() throws Exception {
         Student student = new Student();
-        student.setName("张三");
-        student.setAge(12);
-        student.setClassNo("123456");
-        student.setHomeTown("河南郑州");
+        student.setName("李四");
+        student.setAge(13);
+        student.setClassNo("2345234");
+        student.setHomeTown("陕西西安");
         student.setSex("男");
         studentDao.insertStudent(student);
         sqlSession.commit();
@@ -90,6 +90,12 @@ public class MybatisTest {
         studentCustom.setName("张");
         user.setStudent(studentCustom);
         List<StudentCustom> list = studentDao.findStudentList(user);
+        logger.info(list);
+    }
+
+    @Test
+    public void testFindAllStudentMap() throws Exception {
+        List<Map<String, Object>> list = studentDao.findAllStudentMap();
         logger.info(list);
     }
 

@@ -21,4 +21,6 @@ public interface StudentDao {
     public List<Student> findStudentByMap(Map<String, Object> map) throws Exception;
 
     public List<StudentCustom> findStudentList(UserQueryVo user) throws Exception;
+
+    public List<Map<String, Object>> findAllStudentMap() throws Exception;
 }
