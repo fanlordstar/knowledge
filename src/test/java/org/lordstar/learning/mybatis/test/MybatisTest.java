@@ -99,4 +99,10 @@ public class MybatisTest {
         logger.info(list);
     }
 
+    @Test
+    public void testFindStudentResultMap() throws Exception {
+        List<Student> list = studentDao.findStudentResultMap();
+        logger.info(list);
+    }
+
 }

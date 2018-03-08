@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <!-- 采用mapper代理的方式，namespace是接口的全路径,
      mapper.java接口中的方法名和mapper.xml中statement的id一致
      mapper.java接口中的方法输入参数类型和mapper.xml中statement的parameterType指定的类型一致
      mapper.java接口中的方法返回值类型和mapper.xml中statement的resultType指定的类型一致
      -->
 <mapper namespace="org.lordstar.learning.mybatis.dao.StudentDao">
+
+    <!--如果查询出来的列名和POJO的属性名不一致，可以使用resultMap进行重新映射-->
+    <!--resultMap是将列名和POJO的属性进行映射-->
+    <!--type最终被映射的POJO对象-->
+    <!--id是对resultMap的命名-->
+    <resultMap id="studentResultMap" type="student">
+        <!--id表示查询结果集中的唯一标识， column：查询出来的列名， property：POJO中的属性名-->
+        <id column="_id" property="id" javaType="int"/>
+        <!--result对普通列的定义-->
+        <result column="_age" property="age" javaType="int"/>
+    </resultMap>
+
+    <!--resultMap如果在其他mapper中定义，前面要加namespace-->
+    <select id="findStudentResultMap" resultMap="studentResultMap">
+        select id _id, age _age from t_student
+    </select>
+    
+
     <select id="findStudentById" parameterType="int" resultType="org.lordstar.learning.mybatis.javabean.Student">
         select * from t_student where id=#{id}
     </select>
@@ -73,6 +92,5 @@
     <select id="findAllStudentMap" resultType="java.util.Map">
         select * from t_student;
     </select>
-
 
 </mapper>
