@@ -29,6 +29,6 @@
         <mapper resource="mybatis/mapper/StudentMapper.xml"/>
 
         <!--通过mapper接口进行加载, 需要将mapper接口类和mapper.xml映射文件名称保持一致，并且在一个目录中-->
-        <mapper class="org.lordstar.learning.mybatis.dao.StudentDao"/>
+        <!--<mapper class="org.lordstar.learning.mybatis.dao.StudentDao"/>-->
     </mappers>
 </configuration>

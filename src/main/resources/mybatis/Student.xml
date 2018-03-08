@@ -14,4 +14,6 @@
             resultType="org.lordstar.learning.mybatis.javabean.Student">
         select * from t_student where age=#{age}
     </select>
+
+
 </mapper>

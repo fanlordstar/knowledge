@@ -7,9 +7,13 @@ import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.lordstar.learning.mybatis.dao.StudentDao;
 import org.lordstar.learning.mybatis.javabean.Student;
+import org.lordstar.learning.mybatis.javabean.StudentCustom;
+import org.lordstar.learning.mybatis.javabean.UserQueryVo;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MybatisTest {
     private static Logger logger = Logger.getLogger(MybatisTest.class);
@@ -66,6 +70,26 @@ public class MybatisTest {
     @Test
     public void testFindAllStudent() throws Exception {
         List<Student> list = studentDao.findAllStudent();
+        logger.info(list);
+    }
+
+    @Test
+    public void testFindStudentByMap() throws Exception {
+        Map<String, Object> map = new HashMap();
+        map.put("id", 11);
+        map.put("age", 12);
+        List<Student> list = studentDao.findStudentByMap(map);
+        logger.info(list);
+    }
+
+    @Test
+    public void testFindStudentList() throws Exception {
+        UserQueryVo user = new UserQueryVo();
+        StudentCustom studentCustom = new StudentCustom();
+        studentCustom.setId(11);
+        studentCustom.setName("张");
+        user.setStudent(studentCustom);
+        List<StudentCustom> list = studentDao.findStudentList(user);
         logger.info(list);
     }
 

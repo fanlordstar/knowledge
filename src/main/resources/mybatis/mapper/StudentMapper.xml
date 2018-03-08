@@ -39,4 +39,18 @@
     <select id="findAllStudent" resultType="student">
         select * from t_student
     </select>
+
+    <!--对于map作为参数的时候，使用#{key}获取-->
+    <select id="findStudentByMap" parameterType="java.util.Map"
+            resultType="student">
+        select * from t_student where id=#{id} and age=#{age}
+    </select>
+
+    <!--综合查询-->
+    <!--包装类属性.属性名 取出包装类属性的属性-->
+    <!--${}占位符，如果为简单类型，只能填value-->
+    <select id="findStudentList" parameterType="userqueryvo" resultType="studentcustom">
+        select * from t_student where t_student.id=#{student.id} and t_student.name like '%${student.name}%'
+    </select>
+
 </mapper>

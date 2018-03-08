@@ -1,8 +1,11 @@
 package org.lordstar.learning.mybatis.dao;
 
 import org.lordstar.learning.mybatis.javabean.Student;
+import org.lordstar.learning.mybatis.javabean.StudentCustom;
+import org.lordstar.learning.mybatis.javabean.UserQueryVo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentDao {
     public Student findStudentById(int id) throws Exception;
@@ -14,4 +17,8 @@ public interface StudentDao {
     public void deleteStudent(int id) throws Exception;
 
     public List<Student> findAllStudent() throws Exception;
+
+    public List<Student> findStudentByMap(Map<String, Object> map) throws Exception;
+
+    public List<StudentCustom> findStudentList(UserQueryVo user) throws Exception;
 }
