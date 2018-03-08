@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 定义别名 -->
+    <typeAliases>
+        <!-- 单个别名定义 -->
+        <!--<typeAlias type="org.lordstar.learning.mybatis.javabean.Student" alias="student"/>-->
+
+        <!--多个别名定义-->
+        <package name="org.lordstar.learning.mybatis.javabean"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatisTest"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--单个映射文件的加载-->
+        <mapper resource="mybatis/Student.xml"/>
+        <mapper resource="mybatis/mapper/StudentMapper.xml"/>
+
+        <!--通过mapper接口进行加载, 需要将mapper接口类和mapper.xml映射文件名称保持一致，并且在一个目录中-->
+        <mapper class="org.lordstar.learning.mybatis.dao.StudentDao"/>
+    </mappers>
+</configuration>

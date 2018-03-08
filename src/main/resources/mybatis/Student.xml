@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，作用就是对sql进行分类化管理
+使用mapper代理的方式的化，namespace有特殊作用
+-->
+<mapper namespace="test">
+    <select id="findStudentById" parameterType="int"
+            resultType="org.lordstar.learning.mybatis.javabean.Student">
+        select * from t_student where id=#{id}
+    </select>
+
+    <select id="findStudentByAge" parameterType="int"
+            resultType="org.lordstar.learning.mybatis.javabean.Student">
+        select * from t_student where age=#{age}
+    </select>
+</mapper>

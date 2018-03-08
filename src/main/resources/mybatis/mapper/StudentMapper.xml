@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 采用mapper代理的方式，namespace是接口的地址,
+     mapper.java接口中的方法名和mapper.xml中statement的id一致
+     mapper.java接口中的方法输入参数类型和mapper.xml中statement的parameterType指定的类型一致
+     mapper.java接口中的方法返回值类型和mapper.xml中statement的resultType指定的类型一致
+     -->
+<mapper namespace="org.lordstar.learning.mybatis.dao.StudentDao">
+    <select id="findStudentById" parameterType="int" resultType="org.lordstar.learning.mybatis.javabean.Student">
+        select * from t_student where id=#{id}
+    </select>
+
+    <select id="findStudnetByAge" parameterType="int" resultType="org.lordstar.learning.mybatis.javabean.Student">
+        select * from t_student where age=#{age}
+    </select>
+
+    <insert id="insertStudent" parameterType="org.lordstar.learning.mybatis.javabean.Student">
+        insert into t_student (
+            name,
+            sex,
+            age,
+            classNo,
+            homeTown
+        ) values (
+            #{name},
+            #{sex},
+            #{age},
+            #{classNo},
+            #{homeTown}
+        )
+    </insert>
+
+    <delete id="deleteStudent" parameterType="int">
+        delete from t_student where id=#{id}
+    </delete>
+
+    <!-- 这里注意resultType还是POJO类型 -->
+    <select id="findAllStudent" resultType="student">
+        select * from t_student
+    </select>
+</mapper>
